@@ -1,4 +1,11 @@
 .modal {
-  display: inline-block;
-  vertical-align: middle;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 50%);
+  top: 0;
+  right: 0;
 }
