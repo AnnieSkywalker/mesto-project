@@ -1,0 +1,20 @@
+.modal__input {
+  padding: 0;
+  width: 358px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.modal__input:first-child {
+  margin-bottom: 30px;
+}
+
+.modal__input:nth-child(2) {
+  margin-bottom: 48px;
+}
