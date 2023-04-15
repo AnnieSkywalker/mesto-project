@@ -4,3 +4,12 @@
   height: 33px;
   padding-bottom: 40px;
 }
+
+@media screen and (max-width: 767px)  {
+  .header__image {
+    width: 104px;
+    height: 24px;
+    padding-bottom: 30px;
+    padding-left: 27px;
+  }
+}
