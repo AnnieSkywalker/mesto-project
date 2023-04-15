@@ -2,7 +2,6 @@
   padding: 14px 0;
   margin: 0 0 37px;
   width: 100%;
-  /* height: 50px; */
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -11,4 +10,12 @@
   background: #000;
   border: none;
   border-radius: 2px;
+}
+
+@media screen and (max-width: 767px)  {
+  .modal__submit-button {
+    margin: 0 0 25px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

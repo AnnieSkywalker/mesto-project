@@ -7,3 +7,13 @@
   line-height: 29px;
   color: #000000;
 }
+
+@media screen and (max-width: 767px)  {
+  .modal__title {
+    padding-top: 25px;
+    margin: 0 0 71px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+

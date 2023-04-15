@@ -22,3 +22,9 @@
 .modal__input:nth-child(2) {
   margin-bottom: 48px;
 }
+
+@media screen and (max-width: 767px)  {
+  .modal__input:nth-child(2) {
+    margin-bottom: 42px;
+  }
+}
