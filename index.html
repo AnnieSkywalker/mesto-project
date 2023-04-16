@@ -14,19 +14,15 @@
     </header>
     <main class="content">
       <section class="profile">
-
         <img src="./images/avatar.jpg" alt="Аватарка" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__wrapper">
             <p class="profile__name">Энакин Скайуокер</p>
-            <a href="#" class="profile__edit-button"><img class="profile__pencil-button" src="./images/pencil.svg" alt="Карандаш на кнопке"></a>
+            <button type="button" class="profile__edit-button"></button>
           </div>
           <p class="profile__about">Жизнь на Татуине</p>
         </div>
-
-        <a href="#" class="profile__add-button">
-          <img class="profile__plus-button" src="./images/plus.svg" alt="Плюсик на кнопке">
-        </a>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="cards">
         <ul class="cards__list">
@@ -34,54 +30,42 @@
             <img src="./images/tatooine.jpg" alt="Татуин" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Татуин</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img src="./images/tatooine-farm.jpg" alt="Ферма" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Ферма</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img src="./images/tuskens.jpg" alt="Тускены" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Тускены</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img src="./images/podracing.jpg" alt="гонки на подах" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Гонка на подах</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img src="./images/podracing-2.jpg" alt="под Энакина" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Под Энакина</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img src="./images/r2-d2.jpg" alt="робот Р2-Д2" class="cards__image">
             <div class="cards__description">
               <p class="cards__title">Р2-Д2</p>
-              <a href="#" class="cards__link">
-                <img class="cards__like" src="./images/heart.svg" alt="сердечко">
-              </a>
+              <button type="button" class="cards__like"></button>
             </div>
           </li>
         </ul>
@@ -93,7 +77,7 @@
             <input type="text" class="modal__input" id="author-name" name="author-name" value="Энакин Скайуокер">
             <input type="text" class="modal__input" id="author-description" name="author-description" value="Жизнь на Татуине">
             <button type="submit" class="modal__submit-button">Сохранить</button>
-            <div class="modal__close"></div>
+            <button type="button" class="modal__close"></button>
           </form>
         </div>
       </div>
