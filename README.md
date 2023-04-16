@@ -1,17 +1,19 @@
-# Проект: Место
+# **Mesto**
 
-### Обзор
+[Ссылка на проект в Pages](https://annieskywalker.github.io/mesto-project/)
 
-* Figma
-* Картинки
+## Привет всем, проекте  **Mesto** объединяет все полученые знания за несколько спринтов:
+Это одностраничный лендинг выполненый по технологии БЭМ с использованием технологий позволяющих делать сайт адаптивным и резиновым. Так же в будущем проект будет оживлён с помощью JavaScript
 
-**Figma**
+### В проекте применялись: ###
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* @media - меди запросы.
+* GRID сетка.
+* FLEX BOX.
 
-**Картинки**
+### Макет в ФИГМЕ содержится по следующей ссылке: ###
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+[Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212-269&t=pfBwcVyDcArzmCDk-0)
 
-Удачи!
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AnnieSkywalker&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
