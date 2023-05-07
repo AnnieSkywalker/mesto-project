@@ -25,7 +25,8 @@
       </section>
       <section class="cards">
         <ul class="cards__list">
-          <li class="cards__item">
+
+          <!-- <li class="cards__item">
             <img src="./images/tatooine.jpg" alt="Татуин" class="cards__image">
             <div class="cards__description">
               <h2 class="cards__title">Татуин</h2>
@@ -66,9 +67,18 @@
               <h2 class="cards__title">Р2-Д2</h2>
               <button type="button" class="cards__like" aria-label="Нравиться"></button>
             </div>
-          </li>
+          </li> -->
         </ul>
       </section>
+      <template id="cards__item">
+        <li class="cards__item">
+          <img src="" alt="" class="cards__image">
+          <div class="cards__description">
+            <h2 class="cards__title"></h2>
+            <button type="button" class="cards__like cards__like_active" aria-label="Нравиться"></button>
+          </div>
+        </li>
+      </template>
     </main>
     <footer class="footer">
       <div class="footer__container">
