@@ -38,3 +38,11 @@ initialCards.forEach(item => {
   const cardsItem = cardTemplate.content.cloneNode(true);
   cardsList.append(cardsItem);
 })
+
+cardsList.addEventListener('click', function(evt) {
+  const target = evt.target;
+  
+  if(target.classList.contains('cards__like')) {
+    target.classList.toggle('cards__like_active');
+  }
+})
