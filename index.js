@@ -45,6 +45,18 @@ initialCards.forEach(item => {
   addCard(item.link, item.name);
 })
 
+// const modalSubmitButton = document.querySelector('.modal__submit-button');
+
+// modalSubmitButton.addEventListener(click, function() {
+//   const description = document.querySelector('#author-description');
+//   const name = document.querySelector('#author-name');
+
+//   addProfile(name, description);
+
+//   description.value = '';
+//   name.value = '';
+// })
+
 cardsList.addEventListener('click', function(evt) {
   const target = evt.target;
 
@@ -53,9 +65,9 @@ cardsList.addEventListener('click', function(evt) {
   }
 })
 
-const profileAddButton = document.querySelector('.profile__add-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
 
-profileAddButton.addEventListener('click', function() {
+profileEditButton.addEventListener('click', function() {
   const modalProfile = document.querySelector('.modal__profile');
 
   modalProfile.classList.add('modal_active');
