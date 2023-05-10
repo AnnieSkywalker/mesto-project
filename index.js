@@ -35,6 +35,7 @@ const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
 
+
 initialCards.forEach(item => {
   addCard(item.link, item.name);
 })
@@ -120,13 +121,16 @@ function editProfile(evt) {
 }
 
 
-cardsList.addEventListener('click', function(evt) {
+function addLike (evt) {
   const target = evt.target;
 
   if(target.classList.contains('cards__like')) {
     target.classList.toggle('cards__like_active');
   }
-})
+}
+
+
+cardsList.addEventListener('click', addLike);
 
 document.addEventListener('click', openModal);
 
