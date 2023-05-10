@@ -85,13 +85,24 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </div>
     </footer>
-    <div class="modal modal__profile">
+    <div class="modal modal__edit-profile">
       <div class="modal__container">
         <h2 class="modal__title">Редактировать профиль</h2>
         <form class="modal__form" name="authorForm" method="post">
           <input type="text" class="modal__input" id="author-name" name="author-name" placeholder="Имя">
           <input type="text" class="modal__input" id="author-description" name="author-description" placeholder="О себе">
           <button type="submit" class="modal__submit-button" aria-label="Сохранить">Сохранить</button>
+        </form>
+        <button type="button" class="modal__close" aria-label="Закрыть"></button>
+      </div>
+    </div>
+    <div class="modal modal__add-card">
+      <div class="modal__container">
+        <h2 class="modal__title">Добавить карточку</h2>
+        <form class="modal__form" name="cardForm" method="post">
+          <input type="text" class="modal__input" id="card-name" name="card-name" placeholder="Название">
+          <input type="text" class="modal__input" id="card-description" name="card-description" placeholder="Ссылка на изображение">
+          <button type="submit" class="modal__submit-button" aria-label="Сохранить">Добавить</button>
         </form>
         <button type="button" class="modal__close" aria-label="Закрыть"></button>
       </div>

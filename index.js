@@ -45,6 +45,14 @@ initialCards.forEach(item => {
   addCard(item.link, item.name);
 })
 
+function closeModal(el) {
+  const modal = document.querySelectorAll('.modal');
+
+  if(el.classList.contains('modal__close') || el.classList.contains('modal')) {
+    modal.forEach(item => item.classList.remove('modal_active'));
+  }
+}
+
 // const modalSubmitButton = document.querySelector('.modal__submit-button');
 
 // modalSubmitButton.addEventListener(click, function() {
@@ -68,16 +76,21 @@ cardsList.addEventListener('click', function(evt) {
 const profileEditButton = document.querySelector('.profile__edit-button');
 
 profileEditButton.addEventListener('click', function() {
-  const modalProfile = document.querySelector('.modal__profile');
+  const modalProfile = document.querySelector('.modal__edit-profile');
 
   modalProfile.classList.add('modal_active');
 })
 
-document.addEventListener('click', function(evt) {
-  const target = evt.target;
-  const modalProfile = document.querySelector('.modal__profile');
 
-  if(target.classList.contains('modal__close') || target.classList.contains('modal')) {
-    modalProfile.classList.remove('modal_active');
-  }
+const profileAddButton = document.querySelector('.profile__add-button');
+
+profileAddButton.addEventListener('click', function() {
+  const modalCard = document.querySelector('.modal__add-card');
+  modalCard.classList.add('modal_active');
+})
+
+document.addEventListener('click', function(evt) {
+  let target = evt.target;
+
+  closeModal(target)
 })
