@@ -27,6 +27,9 @@ const initialCards = [
 
 
 const cardsList = document.querySelector('.cards__list');
+const buttonAddCard = document.querySelector('.modal__button-add-card');
+const modalClose = document.querySelector('.modal__close');
+
 
 
 function addCard (link, name) {
@@ -48,33 +51,40 @@ initialCards.forEach(item => {
 function openModal (evt) {
   const target = evt.target;
 
-  if(!target.hasAttribute('data-button')) return;
+  if(target.hasAttribute('data-button')) {
+    const modal = document.querySelector('.modal__' + target.dataset.button);
 
-  const modal = document.querySelector('.modal__' + target.dataset.button);
-
-  modal.classList.add('modal_active');
+    modal.classList.add('modal_active');
+  }
 }
 
 function closeModal(evt) {
   const target = evt.target;
-  const modal = document.querySelectorAll('.modal');
 
   if(target.classList.contains('modal__close') || target.classList.contains('modal')) {
-    modal.forEach(item => item.classList.remove('modal_active'));
+    disactiveModal(target);
   }
 }
 
-// const modalSubmitButton = document.querySelector('.modal__submit-button');
+function disactiveModal (el) {
+  console.log(el);
+  let modal = el.closest('.modal');
+  modal.classList.remove('modal_active');
+}
 
-// modalSubmitButton.addEventListener(click, function() {
-//   const description = document.querySelector('#author-description');
-//   const name = document.querySelector('#author-name');
+function addNewCard (evt) {
+  evt.preventDefault();
+  let self = this;
+  const link = document.querySelector('#card-link');
+  const name = document.querySelector('#card-name');
 
-//   addProfile(name, description);
+  addCard(link.value, name.value)
 
-//   description.value = '';
-//   name.value = '';
-// })
+  link.value = '';
+  name.value = '';
+
+  disactiveModal(self);
+}
 
 cardsList.addEventListener('click', function(evt) {
   const target = evt.target;
@@ -88,3 +98,5 @@ cardsList.addEventListener('click', function(evt) {
 document.addEventListener('click', openModal)
 
 document.addEventListener('click', closeModal);
+
+buttonAddCard.addEventListener('click', addNewCard);
