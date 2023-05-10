@@ -27,9 +27,23 @@ const initialCards = [
 
 
 const cardsList = document.querySelector('.cards__list');
-const buttonAddCard = document.querySelector('.modal__button-add-card');
+const buttonAddModalCard = document.querySelector('.modal__button-add-card');
+const buttonEditModalProfile = document.querySelector('.modal__button-edit-profile');
 const modalClose = document.querySelector('.modal__close');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+const authorDescription = document.querySelector('#author-description');
+const authorName = document.querySelector('#author-name');
 
+initialCards.forEach(item => {
+  addCard(item.link, item.name);
+})
+
+
+function initialInputValueModalProfile () {
+  authorDescription.value = profileAbout.textContent;
+  authorName.value = profileName.textContent;
+}
 
 
 function addCard (link, name) {
@@ -44,19 +58,27 @@ function addCard (link, name) {
   cardsList.append(cardsItem);
 }
 
-initialCards.forEach(item => {
-  addCard(item.link, item.name);
-})
+
+function editValueProfile (description, name) {
+  profileAbout.textContent = description;
+  profileName.textContent = name;
+}
+
 
 function openModal (evt) {
   const target = evt.target;
 
-  if(target.hasAttribute('data-button')) {
+  if (target.dataset.button === 'edit-profile') {
+    initialInputValueModalProfile();
+  }
+
+  if (target.hasAttribute('data-button')) {
     const modal = document.querySelector('.modal__' + target.dataset.button);
 
     modal.classList.add('modal_active');
   }
 }
+
 
 function closeModal(evt) {
   const target = evt.target;
@@ -66,15 +88,16 @@ function closeModal(evt) {
   }
 }
 
+
 function disactiveModal (el) {
-  console.log(el);
   let modal = el.closest('.modal');
   modal.classList.remove('modal_active');
 }
 
+
 function addNewCard (evt) {
   evt.preventDefault();
-  let self = this;
+  const self = this;
   const link = document.querySelector('#card-link');
   const name = document.querySelector('#card-name');
 
@@ -86,6 +109,17 @@ function addNewCard (evt) {
   disactiveModal(self);
 }
 
+
+function editProfile(evt) {
+  evt.preventDefault();
+  const self = this;
+
+  editValueProfile(authorDescription.value, authorName.value);
+
+  disactiveModal(self);
+}
+
+
 cardsList.addEventListener('click', function(evt) {
   const target = evt.target;
 
@@ -94,9 +128,10 @@ cardsList.addEventListener('click', function(evt) {
   }
 })
 
-
-document.addEventListener('click', openModal)
+document.addEventListener('click', openModal);
 
 document.addEventListener('click', closeModal);
 
-buttonAddCard.addEventListener('click', addNewCard);
+buttonAddModalCard.addEventListener('click', addNewCard);
+
+buttonEditModalProfile.addEventListener('click', editProfile);
