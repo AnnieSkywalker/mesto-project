@@ -41,8 +41,25 @@ initialCards.forEach(item => {
 
 cardsList.addEventListener('click', function(evt) {
   const target = evt.target;
-  
+
   if(target.classList.contains('cards__like')) {
     target.classList.toggle('cards__like_active');
+  }
+})
+
+const profileAddButton = document.querySelector('.profile__add-button');
+
+profileAddButton.addEventListener('click', function() {
+  const modalProfile = document.querySelector('.modal__profile');
+
+  modalProfile.classList.add('modal_active');
+})
+
+document.addEventListener('click', function(evt) {
+  const target = evt.target;
+  const modalProfile = document.querySelector('.modal__profile');
+
+  if(target.classList.contains('modal__close') || target.classList.contains('modal')) {
+    modalProfile.classList.remove('modal_active');
   }
 })
