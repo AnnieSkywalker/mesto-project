@@ -1,3 +1,4 @@
 .modal__image-big {
-  min-width: 240px;
+  max-width: 75vw;
+  max-height: 75vh;
 }
