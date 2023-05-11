@@ -19,5 +19,13 @@
 
 [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212-269&t=pfBwcVyDcArzmCDk-0)
 
+Для того что бы проверить опцию добавленя карточки в проект, я сохранил изображение с будущим другом Энакина:
+
+```
+{
+  name: 'Падме',
+  link: './images/padme.jpg'
+}
+```
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AnnieSkywalker&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
