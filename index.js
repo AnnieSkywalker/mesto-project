@@ -53,7 +53,7 @@ function addCard (link, name) {
 
   insertingOptions (cardsImage, cardsTitle, link, name);
   const cardsItem = cardTemplate.content.cloneNode(true);
-  cardsList.append(cardsItem);
+  cardsList.prepend(cardsItem);
 }
 
 
@@ -146,8 +146,18 @@ function addLike (evt) {
   }
 }
 
+function removeCard (evt) {
+  let target = evt.target;
+
+  if(target.classList.contains('cards__remove')) {
+    target.closest('.cards__item').remove();
+  }
+}
+
 
 cardsList.addEventListener('click', addLike);
+
+cardsList.addEventListener('click', removeCard);
 
 document.addEventListener('click', openModal);
 
