@@ -34,6 +34,7 @@ const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
+const cardsImage = document.querySelector('.cards__image');
 
 
 initialCards.forEach(item => {
@@ -73,8 +74,9 @@ function openModal (evt) {
     initialInputValueModalProfile();
   }
 
-  if (target.hasAttribute('data-button')) {
-    const modal = document.querySelector('.modal__' + target.dataset.button);
+  if (target.hasAttribute('data-button') || target.hasAttribute('data-image')) {
+    let valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
+    let modal = document.querySelector('.modal__' + valueDataAttribute);
 
     modal.classList.add('modal_active');
   }
