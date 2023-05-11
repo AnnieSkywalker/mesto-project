@@ -29,7 +29,6 @@ const initialCards = [
 const cardsList = document.querySelector('.cards__list');
 const buttonAddModalCard = document.querySelector('.modal__button-add-card');
 const buttonEditModalProfile = document.querySelector('.modal__button-edit-profile');
-const modalClose = document.querySelector('.modal__close');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
