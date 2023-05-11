@@ -40,12 +40,6 @@ initialCards.forEach(item => {
 })
 
 
-function initialInputValueModalProfile () {
-  authorDescription.value = profileAbout.textContent;
-  authorName.value = profileName.textContent;
-}
-
-
 function addCard (link, name) {
   const cardTemplate = document.querySelector('#cards__item');
   const cardsImage = cardTemplate.content.querySelector('.cards__image');
@@ -54,12 +48,6 @@ function addCard (link, name) {
   insertingOptions (cardsImage, cardsTitle, link, name);
   const cardsItem = cardTemplate.content.cloneNode(true);
   cardsList.prepend(cardsItem);
-}
-
-
-function editValueProfile (description, name) {
-  profileAbout.textContent = description;
-  profileName.textContent = name;
 }
 
 
@@ -82,21 +70,6 @@ function openModal (evt) {
   }
 }
 
-function scrollingImageParameters (el) {
-  const modalImageBig = document.querySelector('.modal__image-big');
-  const modalImageText = document.querySelector('.modal__image-text');
-  let linkImage = el.getAttribute('src');
-  let nameImage = el.getAttribute('alt');
-
-  insertingOptions (modalImageBig, modalImageText, linkImage, nameImage);
-}
-
-function insertingOptions (image, text, link, name) {
-  image.setAttribute('src', link);
-  image.setAttribute('alt', name);
-  text.textContent = name;
-}
-
 
 function closeModal(evt) {
   const target = evt.target;
@@ -107,9 +80,21 @@ function closeModal(evt) {
 }
 
 
-function disactiveModal (el) {
-  let modal = el.closest('.modal');
-  modal.classList.remove('modal_active');
+function addLike (evt) {
+  const target = evt.target;
+
+  if(target.classList.contains('cards__like')) {
+    target.classList.toggle('cards__like_active');
+  }
+}
+
+
+function removeCard (evt) {
+  let target = evt.target;
+
+  if(target.classList.contains('cards__remove')) {
+    target.closest('.cards__item').remove();
+  }
 }
 
 
@@ -138,30 +123,48 @@ function editProfile(evt) {
 }
 
 
-function addLike (evt) {
-  const target = evt.target;
-
-  if(target.classList.contains('cards__like')) {
-    target.classList.toggle('cards__like_active');
-  }
-}
-
-function removeCard (evt) {
-  let target = evt.target;
-
-  if(target.classList.contains('cards__remove')) {
-    target.closest('.cards__item').remove();
-  }
+function disactiveModal (el) {
+  let modal = el.closest('.modal');
+  modal.classList.remove('modal_active');
 }
 
 
-cardsList.addEventListener('click', addLike);
+function initialInputValueModalProfile () {
+  authorDescription.value = profileAbout.textContent;
+  authorName.value = profileName.textContent;
+}
 
-cardsList.addEventListener('click', removeCard);
+
+function editValueProfile (description, name) {
+  profileAbout.textContent = description;
+  profileName.textContent = name;
+}
+
+
+function scrollingImageParameters (el) {
+  const modalImageBig = document.querySelector('.modal__image-big');
+  const modalImageText = document.querySelector('.modal__image-text');
+  let linkImage = el.getAttribute('src');
+  let nameImage = el.getAttribute('alt');
+
+  insertingOptions (modalImageBig, modalImageText, linkImage, nameImage);
+}
+
+
+function insertingOptions (image, text, link, name) {
+  image.setAttribute('src', link);
+  image.setAttribute('alt', name);
+  text.textContent = name;
+}
+
 
 document.addEventListener('click', openModal);
 
 document.addEventListener('click', closeModal);
+
+cardsList.addEventListener('click', addLike);
+
+cardsList.addEventListener('click', removeCard);
 
 buttonAddModalCard.addEventListener('click', addNewCard);
 
