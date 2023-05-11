@@ -34,7 +34,8 @@ const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
-const cardsImage = document.querySelector('.cards__image');
+const modalImageBig = document.querySelector('.modal__image-big');
+const modalImageText = document.querySelector('.modal__image-text');
 
 
 initialCards.forEach(item => {
@@ -74,6 +75,10 @@ function openModal (evt) {
     initialInputValueModalProfile();
   }
 
+  if (target.hasAttribute('data-image')) {
+    scrollingImageParameters(target);
+  }
+
   if (target.hasAttribute('data-button') || target.hasAttribute('data-image')) {
     let valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
     let modal = document.querySelector('.modal__' + valueDataAttribute);
@@ -82,6 +87,14 @@ function openModal (evt) {
   }
 }
 
+function scrollingImageParameters (el) {
+  let linkImage = el.getAttribute('src');
+  let nameImage = el.getAttribute('alt');
+
+  modalImageBig.setAttribute('src', linkImage);
+  modalImageBig.setAttribute('alt', nameImage);
+  modalImageText.textContent = nameImage;
+}
 
 function closeModal(evt) {
   const target = evt.target;
