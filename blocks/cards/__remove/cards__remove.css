@@ -9,3 +9,7 @@
   top: 20px;
   cursor: pointer;
 }
+
+.cards__remove:hover {
+  opacity: 0.5;
+}
