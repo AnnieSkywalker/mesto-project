@@ -34,8 +34,6 @@ const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
-const modalImageBig = document.querySelector('.modal__image-big');
-const modalImageText = document.querySelector('.modal__image-text');
 
 
 initialCards.forEach(item => {
@@ -54,9 +52,7 @@ function addCard (link, name) {
   const cardsImage = cardTemplate.content.querySelector('.cards__image');
   const cardsTitle = cardTemplate.content.querySelector('.cards__title');
 
-  cardsImage.setAttribute('src', link);
-  cardsImage.setAttribute('alt', name);
-  cardsTitle.textContent = name;
+  insertingOptions (cardsImage, cardsTitle, link, name);
   const cardsItem = cardTemplate.content.cloneNode(true);
   cardsList.append(cardsItem);
 }
@@ -88,13 +84,20 @@ function openModal (evt) {
 }
 
 function scrollingImageParameters (el) {
+  const modalImageBig = document.querySelector('.modal__image-big');
+  const modalImageText = document.querySelector('.modal__image-text');
   let linkImage = el.getAttribute('src');
   let nameImage = el.getAttribute('alt');
 
-  modalImageBig.setAttribute('src', linkImage);
-  modalImageBig.setAttribute('alt', nameImage);
-  modalImageText.textContent = nameImage;
+  insertingOptions (modalImageBig, modalImageText, linkImage, nameImage);
 }
+
+function insertingOptions (image, text, link, name) {
+  image.setAttribute('src', link);
+  image.setAttribute('alt', name);
+  text.textContent = name;
+}
+
 
 function closeModal(evt) {
   const target = evt.target;
