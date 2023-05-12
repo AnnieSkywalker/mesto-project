@@ -61,13 +61,18 @@ initialCards.forEach(item => {
 
 
 function addCard (item) {
-  const cardsItem = createCard(item)
+  const cardsItem = createCard(item);
+
+  cardsItem.querySelector(".cards__like").addEventListener('click', addLike);
+  cardsItem.querySelector(".cards__remove").addEventListener('click', removeCard);
+  cardsItem.querySelector(".cards__image").addEventListener('click', zoomImage);
+
   cardsList.prepend(cardsItem);
 }
 
 
 function createCard(item) {
-  insertingOptions (cardsImage, cardsTitle, item.link, item.name);
+  insertOptions (cardsImage, cardsTitle, item.link, item.name);
   const cardElement = cardTemplate.content.cloneNode(true);
 
   return cardElement;
@@ -78,15 +83,11 @@ function openModal (evt) {
   const target = evt.target;
 
   if (target.dataset.button === 'edit-profile') {
-    initialInputValueModalProfile();
+    fillProfileInputs();
   }
 
-  if (target.hasAttribute('data-image')) {
-    scrollingImageParameters(target);
-  }
-
-  if (target.hasAttribute('data-button') || target.hasAttribute('data-image')) {
-    const valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
+  if (target.hasAttribute('data-button')) {
+    const valueDataAttribute = target.dataset.button;
     const modal = document.querySelector('.modal__' + valueDataAttribute);
 
     openPopup(modal);
@@ -127,8 +128,14 @@ function removeCard (evt) {
   }
 }
 
+function zoomImage (evt) {
+  const target = evt.target;
 
-function initialInputValueModalProfile () {
+  scrollingImageParameters(target);
+}
+
+
+function fillProfileInputs () {
   authorDescription.value = profileAbout.textContent;
   authorName.value = profileName.textContent;
 }
@@ -144,11 +151,11 @@ function scrollingImageParameters (el) {
   const linkImage = el.getAttribute('src');
   const nameImage = el.getAttribute('alt');
 
-  insertingOptions (modalImageBig, modalImageText, linkImage, nameImage);
+  insertOptions (modalImageBig, modalImageText, linkImage, nameImage);
 }
 
 
-function insertingOptions (image, text, link, name) {
+function insertOptions (image, text, link, name) {
   image.setAttribute('src', link);
   image.setAttribute('alt', name);
   text.textContent = name;
@@ -163,6 +170,7 @@ profileForm.addEventListener('submit', function (evt) {
 
   closePopup(self.closest('.modal'));
 });
+
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -181,7 +189,3 @@ cardForm.addEventListener('submit', function (evt) {
 
 
 document.addEventListener('click', openModal);
-
-cardsList.addEventListener('click', addLike);
-
-cardsList.addEventListener('click', removeCard);
