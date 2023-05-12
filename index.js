@@ -78,16 +78,6 @@ function createCard(item) {
 }
 
 
-function openPopup (popup) {
-  popup.classList.add('modal_active');
-}
-
-
-function closePopup (popup) {
-  popup.classList.remove('modal_active');
-}
-
-
 function addLike (evt) {
   const target = evt.target;
 
@@ -104,6 +94,16 @@ function removeCard (evt) {
     target.closest('.cards__item').remove();
   }
 }
+
+function openPopup (popup) {
+  popup.classList.add('modal_active');
+}
+
+
+function closePopup (popup) {
+  popup.classList.remove('modal_active');
+}
+
 
 function zoomImage (evt) {
   const target = evt.target;
