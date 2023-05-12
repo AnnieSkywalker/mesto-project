@@ -46,6 +46,8 @@ const profilePopup = document.querySelector('.modal__edit-profile');
 const cardPopup = document.querySelector('.modal__add-card');
 const imagePopup = document.querySelector('.modal__image');
 
+const closeButtons = document.querySelectorAll('.modal__close');
+
 
 initialCards.forEach(item => {
   addCard(item);
@@ -113,13 +115,11 @@ function closePopup (popup) {
 }
 
 
-function closeModal(evt) {
-  const target = evt.target;
+closeButtons.forEach((button) => {
+  const popup = button.closest('.modal');
 
-  if(target.classList.contains('modal__close') || target.classList.contains('modal')) {
-    disactiveModal(target);
-  }
-}
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 
 function addLike (evt) {
@@ -184,10 +184,9 @@ function insertingOptions (image, text, link, name) {
   text.textContent = name;
 }
 
+buttonAddModalCard
 
 document.addEventListener('click', openModal);
-
-document.addEventListener('click', closeModal);
 
 cardsList.addEventListener('click', addLike);
 
