@@ -27,6 +27,14 @@ const initialCards = [
 
 
 const cardsList = document.querySelector('.cards__list');
+
+const cardTemplate = document.querySelector('#cards__item');
+const cardsImage = cardTemplate.content.querySelector('.cards__image');
+const cardsTitle = cardTemplate.content.querySelector('.cards__title');
+
+const cardLink = document.querySelector('#card-link');
+const cardName = document.querySelector('#card-name');
+
 const buttonAddModalCard = document.querySelector('.modal__button-add-card');
 const buttonEditModalProfile = document.querySelector('.modal__button-edit-profile');
 const profileName = document.querySelector('.profile__name');
@@ -36,18 +44,39 @@ const authorName = document.querySelector('#author-name');
 
 
 initialCards.forEach(item => {
-  addCard(item.link, item.name);
+  addCard(item);
 })
 
 
-function addCard (link, name) {
-  const cardTemplate = document.querySelector('#cards__item');
-  const cardsImage = cardTemplate.content.querySelector('.cards__image');
-  const cardsTitle = cardTemplate.content.querySelector('.cards__title');
-
-  insertingOptions (cardsImage, cardsTitle, link, name);
-  const cardsItem = cardTemplate.content.cloneNode(true);
+function addCard (item) {
+  let cardsItem = createCard(item)
   cardsList.prepend(cardsItem);
+}
+
+
+function createCard(item) {
+  insertingOptions (cardsImage, cardsTitle, item.link, item.name);
+  let cardElement = cardTemplate.content.cloneNode(true);
+
+  return cardElement;
+}
+
+
+function addNewCard (evt) {
+  evt.preventDefault();
+  const self = this;
+
+  let item = {
+    link: cardLink.value,
+    name: cardName.value
+  }
+
+  addCard(item);
+
+  cardLink.value = '';
+  cardName.value = '';
+
+  disactiveModal(self);
 }
 
 
@@ -95,21 +124,6 @@ function removeCard (evt) {
   if(target.classList.contains('cards__remove')) {
     target.closest('.cards__item').remove();
   }
-}
-
-
-function addNewCard (evt) {
-  evt.preventDefault();
-  const self = this;
-  const link = document.querySelector('#card-link');
-  const name = document.querySelector('#card-name');
-
-  addCard(link.value, name.value)
-
-  link.value = '';
-  name.value = '';
-
-  disactiveModal(self);
 }
 
 
