@@ -99,8 +99,17 @@ function openModal (evt) {
     let valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
     let modal = document.querySelector('.modal__' + valueDataAttribute);
 
-    modal.classList.add('modal_active');
+    openPopup(modal);
   }
+}
+
+
+function openPopup (popup) {
+  popup.classList.add('modal_active');
+}
+
+function closePopup (popup) {
+  popup.classList.remove('modal_active');
 }
 
 
