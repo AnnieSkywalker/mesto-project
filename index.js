@@ -130,8 +130,10 @@ function removeCard (evt) {
 
 function zoomImage (evt) {
   const target = evt.target;
+  const linkImage = target.getAttribute('src');
+  const nameImage = target.getAttribute('alt');
 
-  scrollingImageParameters(target);
+  insertOptions (modalImageBig, modalImageText, linkImage, nameImage);
 }
 
 
@@ -144,14 +146,6 @@ function fillProfileInputs () {
 function editValueProfile (description, name) {
   profileAbout.textContent = description;
   profileName.textContent = name;
-}
-
-
-function scrollingImageParameters (el) {
-  const linkImage = el.getAttribute('src');
-  const nameImage = el.getAttribute('alt');
-
-  insertOptions (modalImageBig, modalImageText, linkImage, nameImage);
 }
 
 
