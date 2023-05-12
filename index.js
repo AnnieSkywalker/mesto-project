@@ -42,6 +42,10 @@ const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
 
+const profilePopup = document.querySelector('.modal__edit-profile');
+const cardPopup = document.querySelector('.modal__add-card');
+const imagePopup = document.querySelector('.modal__image');
+
 
 initialCards.forEach(item => {
   addCard(item);
