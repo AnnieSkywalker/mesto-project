@@ -51,6 +51,9 @@ const imagePopup = document.querySelector('.modal__image');
 
 const closeButtons = document.querySelectorAll('.modal__close');
 
+const profileForm = document.forms["authorForm"];
+const cardForm = document.forms["cardForm"];
+
 
 initialCards.forEach(item => {
   addCard(item);
@@ -68,24 +71,6 @@ function createCard(item) {
   const cardElement = cardTemplate.content.cloneNode(true);
 
   return cardElement;
-}
-
-
-function addNewCard (evt) {
-  evt.preventDefault();
-  const self = this;
-
-  let item = {
-    link: cardLink.value,
-    name: cardName.value
-  }
-
-  addCard(item);
-
-  cardLink.value = '';
-  cardName.value = '';
-
-  disactiveModal(self);
 }
 
 
@@ -143,16 +128,6 @@ function removeCard (evt) {
 }
 
 
-function editProfile(evt) {
-  evt.preventDefault();
-  const self = this;
-
-  editValueProfile(authorDescription.value, authorName.value);
-
-  disactiveModal(self);
-}
-
-
 function disactiveModal (el) {
   const modal = el.closest('.modal');
   modal.classList.remove('modal_active');
@@ -186,12 +161,36 @@ function insertingOptions (image, text, link, name) {
 }
 
 
+profileForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const self = this;
+
+  editValueProfile(authorDescription.value, authorName.value);
+
+  disactiveModal(self);
+});
+
+cardForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const self = this;
+
+  const item = {
+    link: cardLink.value,
+    name: cardName.value
+  }
+
+  addCard(item);
+
+  cardLink.value = '';
+  cardName.value = '';
+
+  disactiveModal(self);
+});
+
+
+
 document.addEventListener('click', openModal);
 
 cardsList.addEventListener('click', addLike);
 
 cardsList.addEventListener('click', removeCard);
-
-buttonAddModalCard.addEventListener('click', addNewCard);
-
-buttonEditModalProfile.addEventListener('click', editProfile);
