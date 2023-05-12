@@ -42,6 +42,9 @@ const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
 
+const modalImageBig = document.querySelector('.modal__image-big');
+const modalImageText = document.querySelector('.modal__image-text');
+
 const profilePopup = document.querySelector('.modal__edit-profile');
 const cardPopup = document.querySelector('.modal__add-card');
 const imagePopup = document.querySelector('.modal__image');
@@ -55,14 +58,14 @@ initialCards.forEach(item => {
 
 
 function addCard (item) {
-  let cardsItem = createCard(item)
+  const cardsItem = createCard(item)
   cardsList.prepend(cardsItem);
 }
 
 
 function createCard(item) {
   insertingOptions (cardsImage, cardsTitle, item.link, item.name);
-  let cardElement = cardTemplate.content.cloneNode(true);
+  const cardElement = cardTemplate.content.cloneNode(true);
 
   return cardElement;
 }
@@ -98,8 +101,8 @@ function openModal (evt) {
   }
 
   if (target.hasAttribute('data-button') || target.hasAttribute('data-image')) {
-    let valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
-    let modal = document.querySelector('.modal__' + valueDataAttribute);
+    const valueDataAttribute = target.dataset.button ? target.dataset.button : target.dataset.image;
+    const modal = document.querySelector('.modal__' + valueDataAttribute);
 
     openPopup(modal);
   }
@@ -132,7 +135,7 @@ function addLike (evt) {
 
 
 function removeCard (evt) {
-  let target = evt.target;
+  const target = evt.target;
 
   if(target.classList.contains('cards__remove')) {
     target.closest('.cards__item').remove();
@@ -151,7 +154,7 @@ function editProfile(evt) {
 
 
 function disactiveModal (el) {
-  let modal = el.closest('.modal');
+  const modal = el.closest('.modal');
   modal.classList.remove('modal_active');
 }
 
@@ -169,10 +172,8 @@ function editValueProfile (description, name) {
 
 
 function scrollingImageParameters (el) {
-  const modalImageBig = document.querySelector('.modal__image-big');
-  const modalImageText = document.querySelector('.modal__image-text');
-  let linkImage = el.getAttribute('src');
-  let nameImage = el.getAttribute('alt');
+  const linkImage = el.getAttribute('src');
+  const nameImage = el.getAttribute('alt');
 
   insertingOptions (modalImageBig, modalImageText, linkImage, nameImage);
 }
@@ -184,7 +185,6 @@ function insertingOptions (image, text, link, name) {
   text.textContent = name;
 }
 
-buttonAddModalCard
 
 document.addEventListener('click', openModal);
 
