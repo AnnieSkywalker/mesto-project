@@ -128,12 +128,6 @@ function removeCard (evt) {
 }
 
 
-function disactiveModal (el) {
-  const modal = el.closest('.modal');
-  modal.classList.remove('modal_active');
-}
-
-
 function initialInputValueModalProfile () {
   authorDescription.value = profileAbout.textContent;
   authorName.value = profileName.textContent;
@@ -163,17 +157,16 @@ function insertingOptions (image, text, link, name) {
 
 profileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const self = this;
+  const self = evt.target;
 
   editValueProfile(authorDescription.value, authorName.value);
 
-  disactiveModal(self);
+  closePopup(self.closest('.modal'));
 });
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const self = this;
-
+  const self = evt.target;
   const item = {
     link: cardLink.value,
     name: cardName.value
@@ -181,12 +174,10 @@ cardForm.addEventListener('submit', function (evt) {
 
   addCard(item);
 
-  cardLink.value = '';
-  cardName.value = '';
+  self.reset();
 
-  disactiveModal(self);
+  closePopup(self.closest('.modal'));
 });
-
 
 
 document.addEventListener('click', openModal);
