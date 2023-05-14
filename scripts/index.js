@@ -160,5 +160,5 @@ cardForm.addEventListener('submit', function (evt) {
 
   addCard(item);
   self.reset();
-  closePopup(self.closest('.modal'));
+  closePopup(profilePopup);
 });
