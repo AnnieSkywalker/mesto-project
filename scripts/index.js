@@ -55,9 +55,7 @@ const profileForm = document.forms["authorForm"];
 const cardForm = document.forms["cardForm"];
 
 
-initialCards.forEach(item => {
-  addCard(item);
-})
+initialCards.forEach(addCard);
 
 function addCard (item) {
   const cardsItem = createCard(item);
