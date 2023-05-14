@@ -77,18 +77,12 @@ function createCard(item) {
 
 
 function toggleLike (evt) {
-  const target = evt.target;
-
-  target.classList.toggle('cards__like_active');
+  evt.target.classList.toggle('cards__like_active');
 }
 
 
 function removeCard (evt) {
-  const target = evt.target;
-
-  if(target.classList.contains('cards__remove')) {
-    target.closest('.cards__item').remove();
-  }
+  evt.target.closest('.cards__item').remove();
 }
 
 function openPopup (popup) {
