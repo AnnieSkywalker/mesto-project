@@ -59,7 +59,6 @@ initialCards.forEach(addCard);
 
 function addCard (item) {
   const cardsItem = createCard(item);
-
   cardsList.prepend(cardsItem);
 }
 
@@ -70,7 +69,7 @@ function createCard(item) {
 
   cardElement.querySelector(".cards__like").addEventListener('click', toggleLike);
   cardElement.querySelector(".cards__remove").addEventListener('click', removeCard);
-  cardElement.querySelector(".cards__image").addEventListener('click', zoomImage);
+  cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(item.name, item.link));
 
   return cardElement;
 }
@@ -95,11 +94,7 @@ function closePopup (popup) {
 }
 
 
-function zoomImage (evt) {
-  const target = evt.target;
-  const linkImage = target.getAttribute('src');
-  const nameImage = target.getAttribute('alt');
-
+function zoomImage (nameImage, linkImage) {
   insertOptions (imageBigPopup, imageTextPopup, linkImage, nameImage);
   openPopup(imagePopup);
 }
