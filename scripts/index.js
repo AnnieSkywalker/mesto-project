@@ -60,7 +60,7 @@ initialCards.forEach(addCard);
 function addCard (item) {
   const cardsItem = createCard(item);
 
-  cardsItem.querySelector(".cards__like").addEventListener('click', addLike);
+  cardsItem.querySelector(".cards__like").addEventListener('click', toggleLike);
   cardsItem.querySelector(".cards__remove").addEventListener('click', removeCard);
   cardsItem.querySelector(".cards__image").addEventListener('click', zoomImage);
 
@@ -76,12 +76,10 @@ function createCard(item) {
 }
 
 
-function addLike (evt) {
+function toggleLike (evt) {
   const target = evt.target;
 
-  if(target.classList.contains('cards__like')) {
-    target.classList.toggle('cards__like_active');
-  }
+  target.classList.toggle('cards__like_active');
 }
 
 
