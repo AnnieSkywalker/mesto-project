@@ -60,10 +60,6 @@ initialCards.forEach(addCard);
 function addCard (item) {
   const cardsItem = createCard(item);
 
-  cardsItem.querySelector(".cards__like").addEventListener('click', toggleLike);
-  cardsItem.querySelector(".cards__remove").addEventListener('click', removeCard);
-  cardsItem.querySelector(".cards__image").addEventListener('click', zoomImage);
-
   cardsList.prepend(cardsItem);
 }
 
@@ -71,6 +67,10 @@ function addCard (item) {
 function createCard(item) {
   insertOptions (cardsImage, cardsTitle, item.link, item.name);
   const cardElement = cardTemplate.content.cloneNode(true);
+
+  cardElement.querySelector(".cards__like").addEventListener('click', toggleLike);
+  cardElement.querySelector(".cards__remove").addEventListener('click', removeCard);
+  cardElement.querySelector(".cards__image").addEventListener('click', zoomImage);
 
   return cardElement;
 }
