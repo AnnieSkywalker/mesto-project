@@ -143,22 +143,21 @@ closeButtons.forEach((button) => {
 
 profileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const self = evt.target;
 
   editValueProfile(authorDescription.value, authorName.value);
-  closePopup(self.closest('.modal'));
+  closePopup(profilePopup);
 });
 
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  const self = evt.target;
+  const formElement = evt.target;
   const item = {
     link: cardLink.value,
     name: cardName.value
   }
 
   addCard(item);
-  self.reset();
-  closePopup(profilePopup);
+  formElement.reset();
+  closePopup(cardPopup);
 });
