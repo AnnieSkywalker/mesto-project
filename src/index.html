@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./src/pages/index.css">
 </head>
 <body class="page">
   <div class="wrapper">
     <header class="header">
-      <img class="header__image" src="./src/images/logo-white.svg" alt="Логотип">
+      <img class="header__image" src="<%=require('./images/logo-white.svg')%>" alt="Логотип">
     </header>
     <main class="content">
       <section class="profile">
-        <img src="./src/images/avatar.jpg" alt="Аватарка" class="profile__avatar">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__wrapper">
             <h1 class="profile__name">Скайуокер</h1>
@@ -73,6 +72,5 @@
       </div>
     </div>
   </div>
-  <script src="./src/scripts/index.js"></script>
 </body>
 </html>
