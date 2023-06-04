@@ -1,27 +1,27 @@
 const initialCards = [
   {
     name: 'робот Р2-Д2',
-    link: './images/r2-d2.jpg'
+    link: './src/images/r2-d2.jpg'
   },
   {
     name: 'под Энакина',
-    link: './images/podracing-2.jpg'
+    link: './src/images/podracing-2.jpg'
   },
   {
     name: 'гонки на подах',
-    link: './images/podracing.jpg'
+    link: './src/images/podracing.jpg'
   },
   {
     name: 'Тускены',
-    link: './images/tuskens.jpg'
+    link: './src/images/tuskens.jpg'
   },
   {
     name: 'ферма',
-    link: './images/tatooine-farm.jpg'
+    link: './src/images/tatooine-farm.jpg'
   },
   {
     name: 'Татуин',
-    link: './images/tatooine.jpg'
+    link: './src/images/tatooine.jpg'
   }
 ];
 
