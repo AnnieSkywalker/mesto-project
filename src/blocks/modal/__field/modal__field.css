@@ -1,0 +1,19 @@
+.modal__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__field:first-child {
+  margin-bottom: 30px;
+}
+
+.modal__field:nth-child(2) {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 767px)  {
+  .modal__field:nth-child(2) {
+    margin-bottom: 42px;
+  }
+}

@@ -33,8 +33,13 @@
 @import url(../blocks/modal/_active/modal_active.css);
 @import url(../blocks/modal/__title/modal__title.css);
 @import url(../blocks/modal/__container/modal__container.css);
+@import url(../blocks/modal/__field/modal__field.css);
 @import url(../blocks/modal/__input/modal__input.css);
+@import url(../blocks/modal/__input-error/modal__input-error.css);
+@import url(../blocks/modal/__input-error/_active/modal__input-error_active.css);
+@import url(../blocks/modal/__input-type/_error/modal__input-type_error.css);
 @import url(../blocks/modal/__submit-button/modal__submit-button.css);
+@import url(../blocks/modal/__submit-button/_inactive/modal__submit-button_inactive.css);
 @import url(../blocks/modal/__close/modal__colse.css);
 @import url(../blocks/modal/__container/_image/modal__container_image.css);
 @import url(../blocks/modal/__image-big/modal__image-big.css);
