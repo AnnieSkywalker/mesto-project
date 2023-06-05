@@ -47,11 +47,31 @@
         <h2 class="modal__title">Редактировать профиль</h2>
         <form class="modal__form" name="authorForm" method="post">
           <label class="modal__field">
-            <input type="text" class="modal__input" id="author-name" name="author-name" placeholder="Имя" required minlength="7">
+            <input type="text"
+              class="modal__input"
+              id="author-name"
+              name="author-name"
+              placeholder="Имя"
+              required
+              minlength="2"
+              maxlength="40"
+              pattern="^[A-Za-zА-Яа-яёЁ]+(?:[-'\s][A-Za-zА-Яа-яёЁ]+)*$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы."
+            >
             <span class="modal__input-error author-name-error"></span>
           </label>
           <label class="modal__field">
-            <input type="text" class="modal__input" id="author-description" name="author-description" placeholder="О себе" required minlength="7">
+            <input type="text"
+              class="modal__input"
+              id="author-description"
+              name="author-description"
+              placeholder="О себе"
+              required
+              minlength="2"
+              maxlength="200"
+              pattern="^[A-Za-zА-Яа-яёЁ]+(?:[-'\s][A-Za-zА-Яа-яёЁ]+)*$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы."
+            >
             <span class="modal__input-error author-description-error"></span>
           </label>
           <button type="submit" class="modal__submit-button modal__button-edit-profile" aria-label="Сохранить">Сохранить</button>
@@ -64,11 +84,27 @@
         <h2 class="modal__title">Добавить карточку</h2>
         <form class="modal__form" name="cardForm" method="post">
           <label class="modal__field">
-            <input type="text" class="modal__input" id="card-name" name="card-name" placeholder="Название" required minlength="7">
+            <input type="text"
+              class="modal__input"
+              id="card-name"
+              name="card-name"
+              placeholder="Название"
+              required
+              minlength="2"
+              maxlength="30"
+              pattern="^[A-Za-zА-Яа-яёЁ]+(?:[-'\s][A-Za-zА-Яа-яёЁ]+)*$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы."
+            >
             <span class="modal__input-error card-name-error"></span>
           </label>
           <label class="modal__field">
-            <input type="text" class="modal__input" id="card-link" name="card-link" placeholder="Ссылка на изображение" required minlength="7">
+            <input type="url"
+              class="modal__input"
+              id="card-link"
+              name="card-link"
+              placeholder="Ссылка на изображение"
+              required
+            >
             <span class="modal__input-error card-link-error"></span>
           </label>
           <button type="submit" class="modal__submit-button modal__button-add-card" aria-label="Добавить">Добавить</button>
