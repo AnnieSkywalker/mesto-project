@@ -182,8 +182,6 @@ cardForm.addEventListener('submit', function (evt) {
   closePopup(cardPopup);
 });
 
-//валидация форм
-
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -192,12 +190,14 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   errorElement.classList.add('modal__input-error_active');
 };
 
+
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove('modal__input-type_error');
   errorElement.classList.remove('modal__input-error_active');
   errorElement.textContent = '';
 };
+
 
 const checkInputValidity = (formElement, inputElement) => {
   if (inputElement.validity.patternMismatch) {
@@ -213,6 +213,7 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
+
 const hasInvalidInput = (inputList) => {
 
   return inputList.some((inputElement) => {
@@ -221,16 +222,15 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
+
 const toggleButtonState = (inputList, buttonElement) => {
-  // console.log(inputList);
-  // console.log(buttonElement);
   if (hasInvalidInput(inputList)) {
-    console.log(buttonElement)
     buttonElement.classList.add('modal__submit-button_inactive');
   } else {
     buttonElement.classList.remove('modal__submit-button_inactive');
   }
 };
+
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.modal__input'));
@@ -246,6 +246,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
+
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.modal__form'));
   formList.forEach((formElement) => {
@@ -254,13 +255,8 @@ const enableValidation = () => {
     });
 
     setEventListeners(formElement);
-
-    // const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-
-    // fieldsetList.forEach((fieldSet) => {
-    //   setEventListeners(fieldSet);
-    // });
   });
 };
+
 
 enableValidation();
