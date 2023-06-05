@@ -49,6 +49,8 @@ const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
 
+const popupList = document.querySelectorAll('.modal')
+
 const profilePopup = document.querySelector('.modal__edit-profile');
 const cardPopup = document.querySelector('.modal__add-card');
 const imagePopup = document.querySelector('.modal__image');
@@ -143,6 +145,20 @@ closeButtons.forEach((button) => {
 
   button.addEventListener('click', () => closePopup(popup));
 });
+
+popupList.forEach((popup) => {
+  popup.addEventListener('click', evt => {
+    if (evt.target == popup) {
+      closePopup(popup);
+    }
+  }, true);
+
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
+})
 
 
 profileForm.addEventListener('submit', function (evt) {
