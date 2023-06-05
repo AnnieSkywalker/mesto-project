@@ -1,39 +1,8 @@
 import '../pages/index.css';
-
-const R2D2 = new URL('../images/r2-d2.jpg', import.meta.url);
-const Podracing2 = new URL('../images/podracing-2.jpg', import.meta.url);
-const Podracing = new URL('../images/podracing.jpg', import.meta.url);
-const Tuskens = new URL('../images/tuskens.jpg', import.meta.url);
-const TatooineFarm = new URL('../images/tatooine-farm.jpg', import.meta.url);
-const Tatooine = new URL('../images/tatooine.jpg', import.meta.url);
-
-const initialCards = [
-  {
-    name: 'робот Р2-Д2',
-    link: R2D2
-  },
-  {
-    name: 'под Энакина',
-    link: Podracing2
-  },
-  {
-    name: 'гонки на подах',
-    link: Podracing
-  },
-  {
-    name: 'Тускены',
-    link: Tuskens
-  },
-  {
-    name: 'ферма',
-    link: TatooineFarm
-  },
-  {
-    name: 'Татуин',
-    link: Tatooine
-  }
-];
-
+import { showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState } from '../components/validate.js';
+import { initialCards, toggleLike, removeCard } from '../components/card.js';
+import { openPopup, closePopup, insertOptions, fillProfileInputs, editValueProfile } from '../components/modal.js';
+import { zoomImage } from '../components/utils.js'
 
 const cardsList = document.querySelector('.cards__list');
 
@@ -44,8 +13,6 @@ const cardsTitle = cardTemplate.content.querySelector('.cards__title');
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
 
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
 
@@ -53,10 +20,6 @@ const popupList = document.querySelectorAll('.modal')
 
 const profilePopup = document.querySelector('.modal__edit-profile');
 const cardPopup = document.querySelector('.modal__add-card');
-const imagePopup = document.querySelector('.modal__image');
-
-const imageBigPopup = document.querySelector('.modal__image-big');
-const imageTextPopup = document.querySelector('.modal__image-text');
 
 const cardButton = document.querySelector('.profile__add-button');
 const profileButton = document.querySelector('.profile__edit-button');
@@ -83,50 +46,6 @@ function createCard(item) {
   cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(item.name, item.link));
 
   return cardElement;
-}
-
-
-function toggleLike (evt) {
-  evt.target.classList.toggle('cards__like_active');
-}
-
-
-function removeCard (evt) {
-  evt.target.closest('.cards__item').remove();
-}
-
-function openPopup (popup) {
-  popup.classList.add('modal_active');
-}
-
-
-function closePopup (popup) {
-  popup.classList.remove('modal_active');
-}
-
-
-function zoomImage (nameImage, linkImage) {
-  insertOptions (imageBigPopup, imageTextPopup, linkImage, nameImage);
-  openPopup(imagePopup);
-}
-
-
-function fillProfileInputs () {
-  authorDescription.value = profileAbout.textContent;
-  authorName.value = profileName.textContent;
-}
-
-
-function editValueProfile (description, name) {
-  profileAbout.textContent = description;
-  profileName.textContent = name;
-}
-
-
-function insertOptions (image, text, link, name) {
-  image.setAttribute('src', link);
-  image.setAttribute('alt', name);
-  text.textContent = name;
 }
 
 
@@ -181,55 +100,6 @@ cardForm.addEventListener('submit', function (evt) {
   formElement.reset();
   closePopup(cardPopup);
 });
-
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('modal__input-type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('modal__input-error_active');
-};
-
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('modal__input-type_error');
-  errorElement.classList.remove('modal__input-error_active');
-  errorElement.textContent = '';
-};
-
-
-const checkInputValidity = (formElement, inputElement) => {
-  if (inputElement.validity.patternMismatch) {
-  inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-  } else {
-  inputElement.setCustomValidity("");
-  }
-
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-
-const hasInvalidInput = (inputList) => {
-
-  return inputList.some((inputElement) => {
-
-    return !inputElement.validity.valid;
-  })
-};
-
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('modal__submit-button_inactive');
-  } else {
-    buttonElement.classList.remove('modal__submit-button_inactive');
-  }
-};
 
 
 const setEventListeners = (formElement) => {
