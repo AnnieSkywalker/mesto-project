@@ -2,7 +2,7 @@ import '../pages/index.css';
 import { settings, enableValidation, toggleButtonState } from '../components/validate.js';
 import { initialCards, toggleLike, removeCard, addCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
-import { inactiveButtonSubmit } from '../components/utils.js';
+import { deactivateButtonSubmit } from '../components/utils.js';
 
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
@@ -25,9 +25,11 @@ const cardForm = document.forms["cardForm"];
 
 initialCards.forEach(addCard);
 
+
 cardButton.addEventListener('click', function (evt) {
   openPopup(cardPopup);
 })
+
 
 profileButton.addEventListener('click', function () {
   fillProfileInputs();
@@ -35,18 +37,15 @@ profileButton.addEventListener('click', function () {
 })
 
 
-closeButtons.forEach((button) => {
-  const popup = button.closest('.modal');
-
-  button.addEventListener('click', () => closePopup(popup));
-});
-
 popupList.forEach((popup) => {
-  popup.addEventListener('click', evt => {
-    if (evt.target == popup) {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('modal_active')) {
       closePopup(popup);
     }
-  }, true);
+    if (evt.target.classList.contains('modal__close')) {
+      closePopup(popup);
+    }
+  })
 })
 
 
@@ -68,8 +67,9 @@ cardForm.addEventListener('submit', function (evt) {
 
   addCard(item);
   formElement.reset();
-  inactiveButtonSubmit(formElement, cardLink.value, cardName.value, settings);
+  deactivateButtonSubmit(formElement, cardLink.value, cardName.value, settings);
   closePopup(cardPopup);
 });
+
 
 enableValidation(settings);

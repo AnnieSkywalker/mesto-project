@@ -4,7 +4,7 @@ export function insertOptions (image, text, link, name) {
   text.textContent = name;
 }
 
-export function inactiveButtonSubmit (formElement, link, name, config) {
+export function deactivateButtonSubmit (formElement, link, name, config) {
   const buttonElement = formElement.querySelector('button[type="submit"]');
 
   if(link == '' || name == '') {
