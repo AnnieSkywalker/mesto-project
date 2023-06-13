@@ -1,14 +1,8 @@
 import '../pages/index.css';
-import { showInputError, hideInputError, checkInputValidity, hasInvalidInput, toggleButtonState } from '../components/validate.js';
-import { initialCards, toggleLike, removeCard } from '../components/card.js';
-import { openPopup, closePopup, insertOptions, fillProfileInputs, editValueProfile } from '../components/modal.js';
-import { zoomImage } from '../components/utils.js'
-
-const cardsList = document.querySelector('.cards__list');
-
-const cardTemplate = document.querySelector('#cards__item');
-const cardsImage = cardTemplate.content.querySelector('.cards__image');
-const cardsTitle = cardTemplate.content.querySelector('.cards__title');
+import { settings, enableValidation, toggleButtonState } from '../components/validate.js';
+import { initialCards, toggleLike, removeCard, addCard } from '../components/card.js';
+import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
+import { inactiveButtonSubmit } from '../components/utils.js';
 
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
@@ -30,24 +24,6 @@ const cardForm = document.forms["cardForm"];
 
 
 initialCards.forEach(addCard);
-
-function addCard (item) {
-  const cardsItem = createCard(item);
-  cardsList.prepend(cardsItem);
-}
-
-
-function createCard(item) {
-  insertOptions (cardsImage, cardsTitle, item.link, item.name);
-  const cardElement = cardTemplate.content.cloneNode(true);
-
-  cardElement.querySelector(".cards__like").addEventListener('click', toggleLike);
-  cardElement.querySelector(".cards__remove").addEventListener('click', removeCard);
-  cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(item.name, item.link));
-
-  return cardElement;
-}
-
 
 cardButton.addEventListener('click', function (evt) {
   openPopup(cardPopup);
@@ -71,12 +47,6 @@ popupList.forEach((popup) => {
       closePopup(popup);
     }
   }, true);
-
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  })
 })
 
 
@@ -98,35 +68,8 @@ cardForm.addEventListener('submit', function (evt) {
 
   addCard(item);
   formElement.reset();
+  inactiveButtonSubmit(formElement, cardLink.value, cardName.value, settings);
   closePopup(cardPopup);
 });
 
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.modal__input'));
-  const buttonElement = formElement.querySelector('.modal__submit-button')
-
-  toggleButtonState(inputList, buttonElement);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.modal__form'));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
-
-    setEventListeners(formElement);
-  });
-};
-
-
-enableValidation();
+enableValidation(settings);

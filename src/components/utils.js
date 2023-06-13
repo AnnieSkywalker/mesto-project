@@ -1,11 +1,14 @@
-import { openPopup, insertOptions } from './modal.js';
+export function insertOptions (image, text, link, name) {
+  image.setAttribute('src', link);
+  image.setAttribute('alt', name);
+  text.textContent = name;
+}
 
-const imagePopup = document.querySelector('.modal__image');
+export function inactiveButtonSubmit (formElement, link, name, config) {
+  const buttonElement = formElement.querySelector('button[type="submit"]');
 
-const imageBigPopup = document.querySelector('.modal__image-big');
-const imageTextPopup = document.querySelector('.modal__image-text');
-
-export function zoomImage (nameImage, linkImage) {
-  insertOptions (imageBigPopup, imageTextPopup, linkImage, nameImage);
-  openPopup(imagePopup);
+  if(link == '' || name == '') {
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', 'disabled');
+  }
 }
