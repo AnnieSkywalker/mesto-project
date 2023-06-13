@@ -16,15 +16,18 @@ export function zoomImage (nameImage, linkImage) {
   openPopup(imagePopup);
 }
 
+
 export function openPopup (popup) {
   popup.classList.add('modal_active');
   document.addEventListener('keydown', closeByEscape);
 }
 
+
 export function closePopup (popup) {
   popup.classList.remove('modal_active');
   document.removeEventListener('keydown', closeByEscape);
 }
+
 
 export function fillProfileInputs () {
   authorDescription.value = profileAbout.textContent;
@@ -36,6 +39,7 @@ export function editValueProfile (description, name) {
   profileAbout.textContent = description;
   profileName.textContent = name;
 }
+
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {

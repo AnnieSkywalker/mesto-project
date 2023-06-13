@@ -13,6 +13,7 @@ const Tuskens = new URL('../images/tuskens.jpg', import.meta.url);
 const TatooineFarm = new URL('../images/tatooine-farm.jpg', import.meta.url);
 const Tatooine = new URL('../images/tatooine.jpg', import.meta.url);
 
+
 export const initialCards = [
   {
     name: 'робот Р2-Д2',
@@ -40,6 +41,7 @@ export const initialCards = [
   }
 ];
 
+
 export function toggleLike (evt) {
   evt.target.classList.toggle('cards__like_active');
 }
@@ -48,6 +50,7 @@ export function toggleLike (evt) {
 export function removeCard (evt) {
   evt.target.closest('.cards__item').remove();
 }
+
 
 export function addCard (item) {
   const cardsItem = createCard(item);

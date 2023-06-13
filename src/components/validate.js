@@ -7,6 +7,7 @@ export const settings = {
   errorClass: 'modal__input-error_active'
 };
 
+
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -14,12 +15,14 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   errorElement.classList.add(config.errorClass);
 };
 
+
 const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
 };
+
 
 const checkInputValidity = (formElement, inputElement) => {
   if (inputElement.validity.patternMismatch) {
@@ -34,6 +37,7 @@ const checkInputValidity = (formElement, inputElement) => {
     hideInputError(formElement, inputElement, settings);
   }
 };
+
 
 export const hasInvalidInput = (inputList) => {
 
@@ -53,6 +57,7 @@ export const toggleButtonState = (inputList, buttonElement, config) => {
     buttonElement.removeAttribute('disabled');
   }
 };
+
 
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
@@ -79,4 +84,3 @@ export const enableValidation = (config) => {
     setEventListeners(formElement, settings);
   });
 };
-
