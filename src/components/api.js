@@ -6,6 +6,7 @@ const config = {
   }
 }
 
+
 export const getInitialCards = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers
@@ -14,6 +15,7 @@ export const getInitialCards = () => {
       if (res.ok) {
         return res.json();
       }
-    })
-    .then(data => console.log(data));
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
 }

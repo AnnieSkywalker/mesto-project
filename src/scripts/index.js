@@ -5,7 +5,13 @@ import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage }
 import { deactivateButtonSubmit } from '../components/utils.js';
 import { getInitialCards } from '../components/api.js';
 
-getInitialCards();
+getInitialCards()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+});
 
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
