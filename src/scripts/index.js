@@ -3,7 +3,7 @@ import { settings, enableValidation, toggleButtonState } from '../components/val
 import { initialCards, toggleLike, removeCard, addCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
 import { deactivateButtonSubmit } from '../components/utils.js';
-import { getInitialCards } from '../components/api.js';
+import { getInitialCards, getInfoUser } from '../components/api.js';
 
 getInitialCards()
   .then((result) => {
@@ -11,7 +11,15 @@ getInitialCards()
   })
   .catch((err) => {
     console.log(err);
-});
+  });
+
+getInfoUser()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
