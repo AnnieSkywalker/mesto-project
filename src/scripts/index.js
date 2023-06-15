@@ -30,11 +30,13 @@ const authorName = document.querySelector('#author-name');
 const popupList = document.querySelectorAll('.modal')
 
 const profilePopup = document.querySelector('.modal__edit-profile');
+const profileAvatarPopup = document.querySelector('.modal__edit-avatar-profile');
 const cardPopup = document.querySelector('.modal__add-card');
 
 const cardButton = document.querySelector('.profile__add-button');
 const profileButton = document.querySelector('.profile__edit-button');
-const closeButtons = document.querySelectorAll('.modal__close');
+const profileAvatarButton = document.querySelector('.profile__edit-avatar-button');
+// const closeButtons = document.querySelectorAll('.modal__close');
 
 const profileForm = document.forms["authorForm"];
 const cardForm = document.forms["cardForm"];
@@ -53,6 +55,10 @@ profileButton.addEventListener('click', function () {
   openPopup(profilePopup);
 })
 
+profileAvatarButton.addEventListener('click', function () {
+  fillProfileInputs();
+  openPopup(profileAvatarPopup);
+})
 
 popupList.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
