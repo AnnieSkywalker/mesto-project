@@ -38,7 +38,8 @@ const profileButton = document.querySelector('.profile__edit-button');
 const profileAvatarButton = document.querySelector('.profile__edit-avatar-button');
 // const closeButtons = document.querySelectorAll('.modal__close');
 
-const profileForm = document.forms["authorForm"];
+const profileForm = document.forms["authorForm"];6
+const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
 
 
@@ -55,10 +56,12 @@ profileButton.addEventListener('click', function () {
   openPopup(profilePopup);
 })
 
+
 profileAvatarButton.addEventListener('click', function () {
   fillProfileInputs();
   openPopup(profileAvatarPopup);
 })
+
 
 popupList.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -76,6 +79,13 @@ profileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
 
   editValueProfile(authorDescription.value, authorName.value);
+  closePopup(profilePopup);
+});
+
+profileAvatarForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  console.log('запрос');
+
   closePopup(profilePopup);
 });
 
