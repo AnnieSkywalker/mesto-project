@@ -13,14 +13,6 @@ getInitialCards()
     console.log(err);
   });
 
-getInfoUser()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
 
@@ -38,9 +30,26 @@ const profileButton = document.querySelector('.profile__edit-button');
 const profileAvatarButton = document.querySelector('.profile__edit-avatar-button');
 // const closeButtons = document.querySelectorAll('.modal__close');
 
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+const profileAvatar = document.querySelector('.profile__avatar')
+
+
 const profileForm = document.forms["authorForm"];6
 const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
+
+
+getInfoUser()
+  .then((userData) => {
+    console.log(userData);
+    profileName.textContent = userData.name;
+    profileAbout.textContent = userData.name;
+    profileAvatar.src = userData.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 
 initialCards.forEach(addCard);
