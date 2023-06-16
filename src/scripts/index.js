@@ -51,7 +51,15 @@ getInfoUser()
   });
 
 
-initialCards.forEach(addCard);
+getInitialCards()
+  .then((cardsList) => {
+    cardsList.reverse().forEach((card => {
+      addCard(card);
+    }));
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 
 cardButton.addEventListener('click', function (evt) {
