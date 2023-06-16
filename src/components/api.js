@@ -33,3 +33,7 @@ export const getInfoUser = () => {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
 }
+
+export function getAllInfo() {
+  return Promise.all([getInfoUser(), getInitialCards()])
+}

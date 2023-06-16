@@ -3,7 +3,7 @@ import { settings, enableValidation, toggleButtonState } from '../components/val
 import { initialCards, toggleLike, removeCard, addCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
 import { deactivateButtonSubmit } from '../components/utils.js';
-import { getInitialCards, getInfoUser } from '../components/api.js';
+import { getInitialCards, getInfoUser, getAllInfo} from '../components/api.js';
 
 getInitialCards()
   .then((result) => {
@@ -39,20 +39,12 @@ const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
 
 
-getInfoUser()
-  .then((userData) => {
-    console.log(userData);
+getAllInfo()
+  .then(([userData, cardsList]) => {
     profileName.textContent = userData.name;
     profileAbout.textContent = userData.about;
     profileAvatar.src = userData.avatar;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
-
-getInitialCards()
-  .then((cardsList) => {
     cardsList.reverse().forEach((card => {
       addCard(card);
     }));
