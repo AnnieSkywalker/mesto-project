@@ -28,7 +28,6 @@ const cardPopup = document.querySelector('.modal__add-card');
 const cardButton = document.querySelector('.profile__add-button');
 const profileButton = document.querySelector('.profile__edit-button');
 const profileAvatarButton = document.querySelector('.profile__edit-avatar-button');
-// const closeButtons = document.querySelectorAll('.modal__close');
 
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
@@ -44,7 +43,7 @@ getInfoUser()
   .then((userData) => {
     console.log(userData);
     profileName.textContent = userData.name;
-    profileAbout.textContent = userData.name;
+    profileAbout.textContent = userData.about;
     profileAvatar.src = userData.avatar;
   })
   .catch((err) => {
