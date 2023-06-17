@@ -11,6 +11,7 @@ const cardName = document.querySelector('#card-name');
 
 const authorDescription = document.querySelector('#author-description');
 const authorName = document.querySelector('#author-name');
+const authorAvatar = document.querySelector('#author-avatar')
 
 const popupList = document.querySelectorAll('.modal')
 
@@ -87,18 +88,30 @@ profileForm.addEventListener('submit', function (evt) {
 
       console.log(`Обновился профиль имя: ${serverData.name}, о профиле: ${serverData.about}`)
     })
+    .then(() => {
+      closePopup(profilePopup);
+    })
     .catch((err) => {
       console.log(`Что-то пошло не так, ошибка ${err} `)
     })
-
-  closePopup(profilePopup);
 });
 
 profileAvatarForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  console.log('запрос');
 
-  closePopup(profilePopup);
+  editAvatar({ avatar: authorAvatar.value })
+    .then((serverData) => {
+      console.log(serverData);
+      profileAvatar.src = serverData.avatar;
+
+      console.log(`Обновился профиль аватар: ${serverData.avatar}`)
+    })
+    .then(() => {
+      closePopup(profileAvatarPopup);
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так, ошибка ${err} `)
+    })
 });
 
 

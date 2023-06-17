@@ -39,7 +39,6 @@ export const getAllInfo = () => {
 }
 
 export const editProfile = (data) => {
-  console.log(`${config.baseUrl}`);
   return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
