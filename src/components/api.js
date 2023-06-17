@@ -38,7 +38,8 @@ export const getAllInfo = () => {
   return Promise.all([getInfoUser(), getInitialCards()])
 }
 
-const editProfile = (data) => {
+export const editProfile = (data) => {
+  console.log(`${config.baseUrl}`);
   return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
@@ -53,7 +54,7 @@ const editProfile = (data) => {
     });
 }
 
-const editAvatar = (data) => {
+export const editAvatar = (data) => {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
     headers: config.headers,

@@ -3,7 +3,7 @@ import { settings, enableValidation } from '../components/validate.js';
 import { addCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
 import { deactivateButtonSubmit } from '../components/utils.js';
-import { getAllInfo} from '../components/api.js';
+import { getAllInfo, editProfile, editAvatar} from '../components/api.js';
 
 
 const cardLink = document.querySelector('#card-link');
@@ -27,7 +27,7 @@ const profileAbout = document.querySelector('.profile__about');
 const profileAvatar = document.querySelector('.profile__avatar')
 
 
-const profileForm = document.forms["authorForm"];6
+const profileForm = document.forms["authorForm"];
 const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
 
@@ -61,6 +61,8 @@ profileButton.addEventListener('click', function () {
 profileAvatarButton.addEventListener('click', function () {
   fillProfileInputs();
   openPopup(profileAvatarPopup);
+
+
 })
 
 
@@ -79,7 +81,16 @@ popupList.forEach((popup) => {
 profileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
 
-  editValueProfile(authorDescription.value, authorName.value);
+  editProfile({name: authorName.value, about: authorDescription.value})
+    .then((serverData) => {
+      editValueProfile(serverData.name, serverData.about);
+
+      console.log(`Обновился профиль имя: ${serverData.name}, о профиле: ${serverData.about}`)
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так, ошибка ${err} `)
+    })
+
   closePopup(profilePopup);
 });
 

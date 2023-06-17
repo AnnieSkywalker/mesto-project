@@ -35,7 +35,7 @@ export function fillProfileInputs () {
 }
 
 
-export function editValueProfile (description, name) {
+export function editValueProfile (name, description) {
   profileAbout.textContent = description;
   profileName.textContent = name;
 }
