@@ -34,6 +34,21 @@ export const getInfoUser = () => {
     });
 }
 
-export function getAllInfo() {
+export const getAllInfo = () => {
   return Promise.all([getInfoUser(), getInitialCards()])
+}
+
+const editProfile = (data) => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
 }

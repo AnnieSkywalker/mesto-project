@@ -1,17 +1,10 @@
 import '../pages/index.css';
-import { settings, enableValidation, toggleButtonState } from '../components/validate.js';
-import { initialCards, toggleLike, removeCard, addCard } from '../components/card.js';
+import { settings, enableValidation } from '../components/validate.js';
+import { addCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
 import { deactivateButtonSubmit } from '../components/utils.js';
-import { getInitialCards, getInfoUser, getAllInfo} from '../components/api.js';
+import { getAllInfo} from '../components/api.js';
 
-getInitialCards()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 const cardLink = document.querySelector('#card-link');
 const cardName = document.querySelector('#card-name');
