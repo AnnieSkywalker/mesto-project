@@ -67,3 +67,18 @@ export const editAvatar = (data) => {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
 }
+
+export const addNewCard = (data) => {
+  return fetch(`${config.baseUrl}/cards`, {
+    method: 'POST',
+    headers: config.headers,
+    body: JSON.stringify(data)
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}

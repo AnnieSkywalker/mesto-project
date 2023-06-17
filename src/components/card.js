@@ -17,7 +17,7 @@ export function removeCard (evt) {
 }
 
 
-export function addCard (item) {
+export function renderCard (item) {
   const cardsItem = createCard(item);
   cardsList.prepend(cardsItem);
 }

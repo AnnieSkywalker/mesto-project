@@ -1,9 +1,9 @@
 import '../pages/index.css';
 import { settings, enableValidation } from '../components/validate.js';
-import { addCard } from '../components/card.js';
+import { renderCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
 import { deactivateButtonSubmit } from '../components/utils.js';
-import { getAllInfo, editProfile, editAvatar} from '../components/api.js';
+import { getAllInfo, editProfile, editAvatar, addNewCard } from '../components/api.js';
 
 
 const cardLink = document.querySelector('#card-link');
@@ -40,7 +40,7 @@ getAllInfo()
     profileAvatar.src = userData.avatar;
 
     cardsList.reverse().forEach((card => {
-      addCard(card);
+      renderCard (card);
     }));
   })
   .catch((err) => {
@@ -118,12 +118,15 @@ profileAvatarForm.addEventListener('submit', function (evt) {
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const formElement = evt.target;
-  const item = {
-    link: cardLink.value,
-    name: cardName.value
-  }
 
-  addCard(item);
+  addNewCard({name: cardName.value, link: cardLink.value,})
+    .then((serverData) => {
+      renderCard(serverData);
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так, ошибка ${err} `)
+    })
+
   formElement.reset();
   deactivateButtonSubmit(formElement, cardLink.value, cardName.value, settings);
   closePopup(cardPopup);
