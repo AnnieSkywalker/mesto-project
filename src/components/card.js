@@ -17,19 +17,23 @@ export function removeCard (evt) {
 }
 
 
-export function renderCard (item) {
-  const cardsItem = createCard(item);
+export function renderCard (item, userId) {
+  const cardsItem = createCard(item, userId);
   cardsList.prepend(cardsItem);
 }
 
 
-function createCard(item) {
+function createCard(item, userId) {
   insertOptions (cardsImage, cardsTitle, item.link, item.name);
   const cardElement = cardTemplate.content.cloneNode(true);
 
   cardElement.querySelector(".cards__like").addEventListener('click', toggleLike);
   cardElement.querySelector(".cards__remove").addEventListener('click', removeCard);
   cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(item.name, item.link));
+
+  if (item.owner._id !== userId) {
+    cardElement.querySelector(".cards__remove").remove();
+  }
 
   return cardElement;
 }

@@ -33,14 +33,17 @@ const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
 
 
+let userId = null;
+
 getAllInfo()
   .then(([userData, cardsList]) => {
     profileName.textContent = userData.name;
     profileAbout.textContent = userData.about;
     profileAvatar.src = userData.avatar;
+    userId = userData._id;
 
     cardsList.reverse().forEach((card => {
-      renderCard (card);
+      renderCard (card, userId);
     }));
   })
   .catch((err) => {
@@ -121,15 +124,16 @@ cardForm.addEventListener('submit', function (evt) {
 
   addNewCard({name: cardName.value, link: cardLink.value,})
     .then((serverData) => {
-      renderCard(serverData);
+      renderCard(serverData, userId);
+    })
+    .then(() => {
+      formElement.reset();
+      deactivateButtonSubmit(formElement, cardLink.value, cardName.value, settings);
+      closePopup(cardPopup);
     })
     .catch((err) => {
       console.log(`Что-то пошло не так, ошибка ${err} `)
     })
-
-  formElement.reset();
-  deactivateButtonSubmit(formElement, cardLink.value, cardName.value, settings);
-  closePopup(cardPopup);
 });
 
 
