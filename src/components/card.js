@@ -2,13 +2,9 @@ import { insertOptions } from '../components/utils.js';
 import { zoomImage } from '../components/modal.js';
 import { removeCard, changeLikeStatus } from '../components/api.js';
 
-const cardsList = document.querySelector('.cards__list');
-const cardTemplate = document.querySelector('#cards__item');
-const cardsImage = cardTemplate.content.querySelector('.cards__image');
-const cardsTitle = cardTemplate.content.querySelector('.cards__title');
-
 
 export const renderCard = (dataCard, userId) => {
+  const cardsList = document.querySelector('.cards__list');
   const cardsItem = createCard(dataCard, userId, handleLikeStatus, handleRemoveCard );
   cardsList.prepend(cardsItem);
 }
@@ -39,8 +35,12 @@ const checkActivityLike = (cardElementButtonLike) => {
 
 
 const createCard = (dataCard, userId) => {
+  const cardTemplate = document.querySelector('#cards__item');
   const cardElement = cardTemplate.content.cloneNode(true);
+  const cardsImage = cardElement.querySelector('.cards__image');
+  const cardsTitle = cardElement.querySelector('.cards__title');
   const cardButtonLike =  cardElement.querySelector(".cards__like");
+
   insertOptions (cardsImage, cardsTitle, dataCard.link, dataCard.name);
 
   cardElement.querySelector(".cards__group-like").addEventListener('click', (evt) => { handleLikeStatus(evt.target.parentNode, dataCard._id, userId, checkActivityLike(cardButtonLike))} );
