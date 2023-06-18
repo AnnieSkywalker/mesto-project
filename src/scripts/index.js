@@ -2,7 +2,7 @@ import '../pages/index.css';
 import { settings, enableValidation } from '../components/validate.js';
 import { renderCard } from '../components/card.js';
 import { openPopup, closePopup, fillProfileInputs, editValueProfile, zoomImage } from '../components/modal.js';
-import { deactivateButtonSubmit } from '../components/utils.js';
+import { deactivateButtonSubmit, isLoading } from '../components/utils.js';
 import { getAllInfo, editProfile, editAvatar, addNewCard } from '../components/api.js';
 
 
@@ -84,6 +84,7 @@ popupList.forEach((popup) => {
 
 profileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
+  isLoading(evt.submitter, true);
 
   editProfile({name: authorName.value, about: authorDescription.value})
     .then((serverData) => {
@@ -97,10 +98,14 @@ profileForm.addEventListener('submit', function (evt) {
     .catch((err) => {
       console.log(`Что-то пошло не так, ошибка ${err} `)
     })
+    .finally(() => {
+      isLoading(evt.submitter, false);
+    })
 });
 
 profileAvatarForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
+  isLoading(evt.submitter, true);
 
   editAvatar({ avatar: authorAvatar.value })
     .then((serverData) => {
@@ -115,11 +120,16 @@ profileAvatarForm.addEventListener('submit', function (evt) {
     .catch((err) => {
       console.log(`Что-то пошло не так, ошибка ${err} `)
     })
+    .finally(() => {
+      isLoading(evt.submitter, false);
+    })
 });
 
 
 cardForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
+  isLoading(evt.submitter, true);
+
   const formElement = evt.target;
 
   addNewCard({name: cardName.value, link: cardLink.value,})
@@ -133,6 +143,9 @@ cardForm.addEventListener('submit', function (evt) {
     })
     .catch((err) => {
       console.log(`Что-то пошло не так, ошибка ${err} `)
+    })
+    .finally(() => {
+      isLoading(evt.submitter, false);
     })
 });
 

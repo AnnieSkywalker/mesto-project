@@ -13,3 +13,11 @@ export function deactivateButtonSubmit (formElement, link, name, config) {
     buttonElement.setAttribute('disabled', 'disabled');
   }
 }
+
+export function isLoading(textButton, state) {
+  if (state) {
+    textButton.textContent = "Сохранение..."
+  } else {
+    textButton.textContent = "Сохранить"
+  }
+}
