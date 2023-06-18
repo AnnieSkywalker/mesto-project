@@ -36,9 +36,11 @@ export const getInfoUser = () => {
     });
 }
 
+
 export const getAllInfo = () => {
   return Promise.all([getInfoUser(), getInitialCards()])
 }
+
 
 export const editProfile = (data) => {
   return fetch(`${config.baseUrl}/users/me`, {
@@ -55,6 +57,7 @@ export const editProfile = (data) => {
     });
 }
 
+
 export const editAvatar = (data) => {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: 'PATCH',
@@ -69,6 +72,7 @@ export const editAvatar = (data) => {
       return Promise.reject(`Ошибка: ${res.status}`);
     });
 }
+
 
 export const addNewCard = (data) => {
   return fetch(`${config.baseUrl}/cards`, {
@@ -85,6 +89,7 @@ export const addNewCard = (data) => {
     });
 }
 
+
 export const removeCard = (dataId) => {
   return fetch(`${config.baseUrl}/cards/${dataId}`, {
     method: 'DELETE',
@@ -99,9 +104,8 @@ export const removeCard = (dataId) => {
     });
 }
 
+
 export const changeLikeStatus = (dataId, likeState) => {
-  console.log(dataId);
-  console.log(likeState);
   return fetch(`${config.baseUrl}/cards/likes/${dataId}`, {
     method: likeState ? 'DELETE' : 'PUT',
     headers: config.headers

@@ -1,11 +1,11 @@
-export function insertOptions (image, text, link, name) {
+export const insertOptions = (image, text, link, name) => {
   image.setAttribute('src', link);
   image.setAttribute('alt', name);
   text.textContent = name;
 }
 
 
-export function deactivateButtonSubmit (formElement, link, name, config) {
+export const deactivateButtonSubmit = (formElement, link, name, config) => {
   const buttonElement = formElement.querySelector('button[type="submit"]');
 
   if(link == '' || name == '') {
@@ -14,7 +14,7 @@ export function deactivateButtonSubmit (formElement, link, name, config) {
   }
 }
 
-export function isLoading(textButton, state) {
+export const isLoading = (textButton, state) => {
   if (state) {
     textButton.textContent = "Сохранение..."
   } else {

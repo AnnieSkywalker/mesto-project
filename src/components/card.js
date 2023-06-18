@@ -8,7 +8,7 @@ const cardsImage = cardTemplate.content.querySelector('.cards__image');
 const cardsTitle = cardTemplate.content.querySelector('.cards__title');
 
 
-export function renderCard (dataCard, userId) {
+export const renderCard = (dataCard, userId) => {
   const cardsItem = createCard(dataCard, userId, handleLikeStatus, handleRemoveCard );
   cardsList.prepend(cardsItem);
 }
@@ -17,6 +17,7 @@ export function renderCard (dataCard, userId) {
 export const likeState = (likesArr, userId) => {
   return Boolean(likesArr.find(objItem => objItem._id === userId));
 }
+
 
 export const updateLikeState = (cardElement, likesArr, userId) => {
   const ButtonLike =  cardElement.querySelector('.cards__like');
@@ -31,11 +32,13 @@ export const updateLikeState = (cardElement, likesArr, userId) => {
   }
 }
 
+
 const checkActivityLike = (cardElementButtonLike) => {
   return cardElementButtonLike.classList.contains('cards__like_active');
 }
 
-function createCard(dataCard, userId) {
+
+const createCard = (dataCard, userId) => {
   const cardElement = cardTemplate.content.cloneNode(true);
   const cardButtonLike =  cardElement.querySelector(".cards__like");
   insertOptions (cardsImage, cardsTitle, dataCard.link, dataCard.name);
@@ -53,7 +56,8 @@ function createCard(dataCard, userId) {
   return cardElement;
 }
 
-function handleRemoveCard (cardElement, dataId) {
+
+const handleRemoveCard = (cardElement, dataId) => {
   removeCard(dataId)
     .then(() => {
       cardElement.closest('.cards__item').remove();
@@ -63,7 +67,8 @@ function handleRemoveCard (cardElement, dataId) {
     })
 }
 
-function handleLikeStatus (cardElement, dataId, userId, state) {
+
+const handleLikeStatus = (cardElement, dataId, userId, state) =>{
   changeLikeStatus(dataId, state)
     .then((serverData) => {
       updateLikeState(cardElement, serverData.likes, userId);

@@ -27,7 +27,6 @@ const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const profileAvatar = document.querySelector('.profile__avatar')
 
-
 const profileForm = document.forms["authorForm"];
 const profileAvatarForm = document.forms["authorAvatarForm"];
 const cardForm = document.forms["cardForm"];
@@ -65,8 +64,6 @@ profileButton.addEventListener('click', function () {
 profileAvatarButton.addEventListener('click', function () {
   fillProfileInputs();
   openPopup(profileAvatarPopup);
-
-
 })
 
 
@@ -102,6 +99,7 @@ profileForm.addEventListener('submit', function (evt) {
       isLoading(evt.submitter, false);
     })
 });
+
 
 profileAvatarForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
