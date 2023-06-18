@@ -1,5 +1,6 @@
 import { insertOptions } from '../components/utils.js';
 import { zoomImage } from '../components/modal.js';
+import { removeCard } from '../components/api.js';
 
 const cardsList = document.querySelector('.cards__list');
 const cardTemplate = document.querySelector('#cards__item');
@@ -11,29 +12,33 @@ export function toggleLike (evt) {
   evt.target.classList.toggle('cards__like_active');
 }
 
-
-export function removeCard (evt) {
-  evt.target.closest('.cards__item').remove();
-}
-
-
-export function renderCard (item, userId) {
-  const cardsItem = createCard(item, userId);
+export function renderCard (dataCard, userId) {
+  const cardsItem = createCard(dataCard, userId, handleRemoveCard );
   cardsList.prepend(cardsItem);
 }
 
 
-function createCard(item, userId) {
-  insertOptions (cardsImage, cardsTitle, item.link, item.name);
+function createCard(dataCard, userId) {
+  insertOptions (cardsImage, cardsTitle, dataCard.link, dataCard.name);
   const cardElement = cardTemplate.content.cloneNode(true);
 
   cardElement.querySelector(".cards__like").addEventListener('click', toggleLike);
-  cardElement.querySelector(".cards__remove").addEventListener('click', removeCard);
-  cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(item.name, item.link));
+  cardElement.querySelector(".cards__remove").addEventListener('click', (evt) => { handleRemoveCard(evt.target, dataCard._id) });
+  cardElement.querySelector(".cards__image").addEventListener("click", () => zoomImage(dataCard.name, dataCard.link));
 
-  if (item.owner._id !== userId) {
+  if (dataCard.owner._id !== userId) {
     cardElement.querySelector(".cards__remove").remove();
   }
 
   return cardElement;
+}
+
+function handleRemoveCard (cardElement, dataId) {
+  removeCard(dataId)
+    .then(() => {
+      cardElement.closest('.cards__item').remove();
+    })
+    .catch((err) => {
+      console.log(`Что-то пошло не так, ошибка ${err} `)
+    })
 }
