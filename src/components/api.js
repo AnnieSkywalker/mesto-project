@@ -1,3 +1,5 @@
+import { likeState, updateLikeState } from '../components/card.js';
+
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-25',
   headers: {
@@ -86,6 +88,22 @@ export const addNewCard = (data) => {
 export const removeCard = (dataId) => {
   return fetch(`${config.baseUrl}/cards/${dataId}`, {
     method: 'DELETE',
+    headers: config.headers
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}
+
+export const changeLikeStatus = (dataId, likeState) => {
+  console.log(dataId);
+  console.log(likeState);
+  return fetch(`${config.baseUrl}/cards/likes/${dataId}`, {
+    method: likeState ? 'DELETE' : 'PUT',
     headers: config.headers
   })
     .then(res => {
