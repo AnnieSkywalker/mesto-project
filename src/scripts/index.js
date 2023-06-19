@@ -107,7 +107,6 @@ profileAvatarForm.addEventListener('submit', function (evt) {
 
   editAvatar({ avatar: authorAvatar.value })
     .then((serverData) => {
-      console.log(serverData);
       profileAvatar.src = serverData.avatar;
 
       console.log(`Обновился профиль аватар: ${serverData.avatar}`)
