@@ -21,3 +21,7 @@ export const isLoading = (textButton, state) => {
     textButton.textContent = "Сохранить"
   }
 }
+
+export const checkResponse = (response) => {
+  return response.ok ? response.json() : Promise.reject(`Ошибка: ${response.status}`);
+}
