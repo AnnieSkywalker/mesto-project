@@ -2,9 +2,10 @@ import { insertOptions } from '../components/utils.js';
 import { zoomImage } from '../components/modal.js';
 import { removeCard, changeLikeStatus } from '../components/api.js';
 
+const cardsList = document.querySelector('.cards__list');
+
 
 export const renderCard = (dataCard, userId) => {
-  const cardsList = document.querySelector('.cards__list');
   const cardsItem = createCard(dataCard, userId, handleLikeStatus, handleRemoveCard );
   cardsList.prepend(cardsItem);
 }

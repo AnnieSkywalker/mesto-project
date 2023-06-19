@@ -11,7 +11,7 @@ const config = {
 
 
 const request = (url, options) => {
-  return fetch(url , options).then(checkResponse);
+  return fetch(url, options).then(checkResponse);
 }
 
 
