@@ -17,15 +17,15 @@ export const likeState = (likesArr, userId) => {
 
 
 export const updateLikeState = (cardElement, likesArr, userId) => {
-  const ButtonLike =  cardElement.querySelector('.cards__like');
-  const NumberLike =  cardElement.querySelector('.cards__number-likes');
+  const buttonLike =  cardElement.querySelector('.cards__like');
+  const numberLike =  cardElement.querySelector('.cards__number-likes');
 
-  NumberLike.textContent = likesArr.length;
+  numberLike.textContent = likesArr.length;
 
   if(likeState(likesArr, userId)) {
-    ButtonLike.classList.add('cards__like_active');
+    buttonLike.classList.add('cards__like_active');
   } else {
-    ButtonLike.classList.remove('cards__like_active');
+    buttonLike.classList.remove('cards__like_active');
   }
 }
 
